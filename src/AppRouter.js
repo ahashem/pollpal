@@ -3,10 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 
 import NotFound from './components/NotFound/NotFound';
 import QuestionsList from './views/QuestionsList/QuestionsList';
+import QuestionDetails from './views/QuestionDetails/QuestionDetails';
 
 
 // Public paths
 const pathRoot = '/';
+const pathQuestionDetails = `${pathRoot}question`;
 
 /**
  * Application Main Router Component
@@ -14,7 +16,7 @@ const pathRoot = '/';
 const AppRouter = () => (
   <Switch>
     <Route exact path={pathRoot} component={QuestionsList}/>
-
+    <Route path={`${pathQuestionDetails}/:id`} component={QuestionDetails} />
     <Route component={NotFound}/>
   </Switch>
 );

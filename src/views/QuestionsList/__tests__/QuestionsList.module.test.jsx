@@ -16,7 +16,7 @@ beforeAll(() => {
   };
 
   module.config({
-    name: 'QuestionsList',
+    name: 'questionsList',
     store: mockStore,
   });
 });

@@ -31,7 +31,11 @@ ShallowWrapper {
       "actions": Object {
         "getQuestionsList": [Function],
       },
-      "state": undefined,
+      "state": Object {
+        "error": false,
+        "errorMes": "",
+        "loading": false,
+      },
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -73,7 +77,11 @@ ShallowWrapper {
         "actions": Object {
           "getQuestionsList": [Function],
         },
-        "state": undefined,
+        "state": Object {
+          "error": false,
+          "errorMes": "",
+          "loading": false,
+        },
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],

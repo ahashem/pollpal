@@ -1,7 +1,7 @@
 import { createModule } from 'speedux';
 import { questionsApi } from '../../utils/API';
 
-export default createModule('QuestionsList', {
+export default createModule('questionsList', {
 
   state: {
     loading: false,

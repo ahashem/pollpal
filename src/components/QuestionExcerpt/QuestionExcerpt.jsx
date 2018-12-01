@@ -1,19 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Card } from 'antd';
+
 /**
- * Display
+ * Display Question summary
  * @param question
  * @param published_at
  * @param choices
  */
 const QuestionExcerpt = ({ excerpt: { url, question, published_at: published, choices } }) => {
   return (
-    <div>
-      <p>{question}</p>
+    <Card
+      title={question}
+    >
       <p>{published}</p>
       <p>{choices ? choices.length : 0}</p>
-    </div>
+    </Card>
   );
 };
 

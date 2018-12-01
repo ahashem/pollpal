@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<QuestionExcerpt /> Component should render children and match snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <QuestionExcerpt
+    excerpt={
+      Object {
+        "choices": Array [
+          Object {
+            "choice": "Swift",
+            "url": "/questions/1/choices/1",
+            "votes": 2048,
+          },
+          Object {
+            "choice": "Python",
+            "url": "/questions/1/choices/2",
+            "votes": 1024,
+          },
+          Object {
+            "choice": "Objective-C",
+            "url": "/questions/1/choices/3",
+            "votes": 512,
+          },
+          Object {
+            "choice": "Ruby",
+            "url": "/questions/1/choices/4",
+            "votes": 256,
+          },
+        ],
+        "published_at": "2014-11-11T08:40:51.620Z",
+        "question": "Favourite programming language?",
+        "url": "/questions/1",
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <p>
+          2014-11-11T08:40:51.620Z
+        </p>,
+        <p>
+          4
+        </p>,
+      ],
+      "title": "Favourite programming language?",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "2014-11-11T08:40:51.620Z",
+        },
+        "ref": null,
+        "rendered": "2014-11-11T08:40:51.620Z",
+        "type": "p",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": 4,
+        },
+        "ref": null,
+        "rendered": 4,
+        "type": "p",
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <p>
+            2014-11-11T08:40:51.620Z
+          </p>,
+          <p>
+            4
+          </p>,
+        ],
+        "title": "Favourite programming language?",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "2014-11-11T08:40:51.620Z",
+          },
+          "ref": null,
+          "rendered": "2014-11-11T08:40:51.620Z",
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": 4,
+          },
+          "ref": null,
+          "rendered": 4,
+          "type": "p",
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;

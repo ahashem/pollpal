@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'speedux';
-import { Alert, Spin } from 'antd';
+import { Alert, List, Spin } from 'antd';
 
 import module from './QuestionsList.module';
 import QuestionExcerpt from '../../components/QuestionExcerpt/QuestionExcerpt';
 
+const { Item: ListItem } = List;
 
 class QuestionsList extends Component {
   static propTypes = {
@@ -33,11 +34,19 @@ class QuestionsList extends Component {
    * @return {*}
    */
   renderQuestionsExcerpts = (questions) => {
-    return questions.map((question, index) => {
-      return (
-        <QuestionExcerpt excerpt={question}/>
-      );
-    });
+    return (
+      <List
+        grid={{ gutter: 16, xs: 1, sm: 2, md: 4, lg: 4, xl: 6, xxl: 3 }}
+        dataSource={questions}
+        renderItem={question => (
+          <ListItem>
+            <QuestionExcerpt
+              excerpt={question}
+            />
+          </ListItem>
+        )}
+      />
+    );
   };
 
   render() {

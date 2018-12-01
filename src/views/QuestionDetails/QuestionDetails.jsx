@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'speedux';
-import { Alert, Button, List, Radio } from 'antd';
+import { Alert, Button } from 'antd';
 
 import Choices from '../../components/Choices/Choices';
 import module from './QuestionDetails.module';
 import { pathRoot } from '../../AppRouter';
 
 import './QuestionDetails.scss';
-
-const { Item } = List;
-const RadioButton = Radio.Button;
-const RadioGroup = Radio.Group;
 
 class QuestionDetails extends Component {
   static propTypes = {
@@ -93,7 +89,7 @@ class QuestionDetails extends Component {
   };
 
   render() {
-
+    const { selectedChoiceUrl } = this.state;
     const { state } = this.props;
     const { loading, voting, question: questionDetails, error, errorMsg } = state;
     const { question, choices } = questionDetails;
@@ -119,6 +115,7 @@ class QuestionDetails extends Component {
             type="primary"
             loading={voting}
             onClick={this.vote}
+            disabled={!selectedChoiceUrl}
           >
             Save
           </Button>

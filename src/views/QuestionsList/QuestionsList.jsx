@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'speedux';
-import { Alert, List, Skeleton, Spin } from 'antd';
+import { Alert, List, Skeleton } from 'antd';
 
 import module from './QuestionsList.module';
 import QuestionExcerpt from '../../components/QuestionExcerpt/QuestionExcerpt';

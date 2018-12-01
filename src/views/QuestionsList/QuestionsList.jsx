@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'speedux';
-import { Alert, List, Spin } from 'antd';
+import { Alert, List, Skeleton, Spin } from 'antd';
 
 import module from './QuestionsList.module';
 import QuestionExcerpt from '../../components/QuestionExcerpt/QuestionExcerpt';
@@ -32,21 +32,25 @@ class QuestionsList extends Component {
   /**
    *
    * @param questions
+   * @param loading
    * @return {*}
    */
-  renderQuestionsExcerpts = (questions) => {
+  renderQuestionsExcerpts = (questions, loading = false) => {
     return (
       <List
         grid={{ gutter: 16, xs: 1, sm: 2, md: 4, lg: 4, xl: 6, xxl: 3 }}
         dataSource={questions}
+        loading={loading}
         renderItem={question => (
           <NavLink
             to={question.url}
           >
             <ListItem>
-              <QuestionExcerpt
+              <Skeleton loading={loading} active>
+                <QuestionExcerpt
                 excerpt={question}
               />
+              </Skeleton>
             </ListItem>
           </NavLink>
         )}
@@ -61,6 +65,7 @@ class QuestionsList extends Component {
 
     return (
       <div>
+        <h1>Questions</h1>
         {
           error && (
             <Alert
@@ -71,11 +76,11 @@ class QuestionsList extends Component {
             />
           )
         }
-        {loading ?
-          (
-            <Spin/>
-          )
-          : this.renderQuestionsExcerpts(questions)
+        {
+          <React.Fragment>
+
+            {this.renderQuestionsExcerpts(questions, loading)}
+          </React.Fragment>
         }
       </div>
     );

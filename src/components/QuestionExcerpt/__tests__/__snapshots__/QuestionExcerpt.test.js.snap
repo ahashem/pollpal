@@ -49,12 +49,14 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <p>
-          2014-11-11T08:40:51.620Z
+          Nov 11, 2014
         </p>,
         <p>
           4
+           choice(s)
         </p>,
       ],
+      "hoverable": true,
       "title": "Favourite programming language?",
     },
     "ref": null,
@@ -64,10 +66,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "2014-11-11T08:40:51.620Z",
+          "children": "Nov 11, 2014",
         },
         "ref": null,
-        "rendered": "2014-11-11T08:40:51.620Z",
+        "rendered": "Nov 11, 2014",
         "type": "p",
       },
       Object {
@@ -75,10 +77,16 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": 4,
+          "children": Array [
+            4,
+            " choice(s)",
+          ],
         },
         "ref": null,
-        "rendered": 4,
+        "rendered": Array [
+          4,
+          " choice(s)",
+        ],
         "type": "p",
       },
     ],
@@ -92,12 +100,14 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <p>
-            2014-11-11T08:40:51.620Z
+            Nov 11, 2014
           </p>,
           <p>
             4
+             choice(s)
           </p>,
         ],
+        "hoverable": true,
         "title": "Favourite programming language?",
       },
       "ref": null,
@@ -107,10 +117,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "2014-11-11T08:40:51.620Z",
+            "children": "Nov 11, 2014",
           },
           "ref": null,
-          "rendered": "2014-11-11T08:40:51.620Z",
+          "rendered": "Nov 11, 2014",
           "type": "p",
         },
         Object {
@@ -118,10 +128,16 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": 4,
+            "children": Array [
+              4,
+              " choice(s)",
+            ],
           },
           "ref": null,
-          "rendered": 4,
+          "rendered": Array [
+            4,
+            " choice(s)",
+          ],
           "type": "p",
         },
       ],

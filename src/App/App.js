@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AppLayout from './Layout/AppLayout';
 
+import QuestionsList from '../views/QuestionsList/QuestionsList';
 import './App.scss';
 
 class App extends Component {
@@ -8,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <AppLayout>
-          <div>Hello</div>
+          <QuestionsList />
         </AppLayout>
       </div>
     );

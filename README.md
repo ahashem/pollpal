@@ -6,11 +6,14 @@
 [![codecov](https://codecov.io/gh/ahashem/pollpal/branch/master/graph/badge.svg)](https://codecov.io/gh/ahashem/pollpall)
 
 ## About PollPal
-
  
 
 ### Development Stack:
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+For state management an abstraction layer over Redux, redux-sagas is used, to avoid redundancy and editing lots of files. Check [Speedux](https://github.com/teefouad/speedux). 
+
+For rapid UI prototyping and consistency, [AntD](https://github.com/ant-design/ant-design) design language is used.
 
 
 ### Instructions
@@ -20,6 +23,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 #3 Install dependencies: `yarn install`
 
-#4 Start development server: `yarn start`
+#4 Before starting, create a `.env` file by copying `.env-example` and source the Environment configurations: `$> source .env`
 
-#5 Additionally, to run tests: `yarn test`
+Note:
+Example of environment configuration, the env. variable `REACT_APP_POLLS_BASE_URL` can be set to use the debugging version of the API In development environment: `REACT_APP_POLLS_BASE_URL=https://private-b7de7-pollsapi.apiary-proxy.com/` yet In production environment can consume the Real API:
+`REACT_APP_POLLS_BASE_URL=https://polls.apiblueprint.org/`
+
+#5 Start development server: `yarn start`
+
+#6 Additionally, to run tests: `yarn test` or lint using `yarn lint` 
+
+
+### API
+Built Using [Apiary's Polls API](https://pollsapi.docs.apiary.io). 

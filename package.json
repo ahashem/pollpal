@@ -20,12 +20,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "lint": "eslint .",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "codecov": "codecov"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",

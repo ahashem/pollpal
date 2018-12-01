@@ -5,6 +5,7 @@ import { Alert, List, Spin } from 'antd';
 
 import module from './QuestionsList.module';
 import QuestionExcerpt from '../../components/QuestionExcerpt/QuestionExcerpt';
+import { NavLink } from 'react-router-dom';
 
 const { Item: ListItem } = List;
 
@@ -39,11 +40,15 @@ class QuestionsList extends Component {
         grid={{ gutter: 16, xs: 1, sm: 2, md: 4, lg: 4, xl: 6, xxl: 3 }}
         dataSource={questions}
         renderItem={question => (
-          <ListItem>
-            <QuestionExcerpt
-              excerpt={question}
-            />
-          </ListItem>
+          <NavLink
+            to={question.url}
+          >
+            <ListItem>
+              <QuestionExcerpt
+                excerpt={question}
+              />
+            </ListItem>
+          </NavLink>
         )}
       />
     );

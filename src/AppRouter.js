@@ -8,7 +8,7 @@ import QuestionDetails from './views/QuestionDetails/QuestionDetails';
 
 // Public paths
 const pathRoot = '/';
-const pathQuestionDetails = `${pathRoot}question`;
+const pathQuestionDetails = `${pathRoot}questions`;
 
 /**
  * Application Main Router Component

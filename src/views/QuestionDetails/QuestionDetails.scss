@@ -1,0 +1,11 @@
+.ant-radio-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+label {
+  &.ant-radio-button-wrapper {
+    display: block;
+    height: 70px;
+    width: 80%;
+  }
+}

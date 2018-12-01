@@ -8,6 +8,8 @@ import { withRouter } from 'react-router-dom';
 import Helpers from '../../utils/helpers';
 import { pathRoot } from '../../AppRouter';
 
+import './QuestionDetails.scss';
+
 const { Item } = List;
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
@@ -70,29 +72,31 @@ class QuestionDetails extends Component {
   renderQuestionsChoices = (choices = [], loading = false) => {
     const choicesCount = choices.reduce((acc, curr) => acc + curr.votes, 0);
     return (
-      <RadioGroup onChange={this.selectChoice}>
-        <List
-        itemLayout="horizontal"
-        loading={loading}
-        dataSource={choices}
-        renderItem={choice => (
-          <RadioButton
-            value={choice.url}
-            buttonStyle="solid"
-          >
-            <Item key={choice.url}>
-              <Skeleton avatar title={false} loading={loading} active>
-                <Item.Meta
-                  title={choice.choice}
-                  description={`${choice.votes} votes`}
-                />
-                <div>{`${Helpers.calculatePercentage(choice.votes, choicesCount)} %`}</div>
-              </Skeleton>
-            </Item>
-          </RadioButton>
-        )}
-      />
-      </RadioGroup>
+      <div style={{ marginBottom: 16 }}>
+        <RadioGroup onChange={this.selectChoice}>
+          <List
+            itemLayout="horizontal"
+            loading={loading}
+            dataSource={choices}
+            renderItem={choice => (
+              <RadioButton
+                value={choice.url}
+                buttonStyle="solid"
+              >
+                <Item key={choice.url}>
+                  <Skeleton avatar title={false} loading={loading} active>
+                    <Item.Meta
+                      title={choice.choice}
+                      description={`${choice.votes} votes`}
+                    />
+                    <div>{`${Helpers.calculatePercentage(choice.votes, choicesCount)} %`}</div>
+                  </Skeleton>
+                </Item>
+              </RadioButton>
+            )}
+          />
+        </RadioGroup>
+      </div>
     );
   };
 

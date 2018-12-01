@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppLayout from './Layout/AppLayout';
+import AppRouter from '../AppRouter';
 
-import QuestionsList from '../views/QuestionsList/QuestionsList';
 import './App.scss';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <AppLayout>
-          <QuestionsList />
+          <AppRouter />
         </AppLayout>
       </div>
     );

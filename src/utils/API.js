@@ -69,4 +69,12 @@ const request = (url, method = 'GET', data = {}) => {
   return (process.env.REACT_APP_MOCK_API) ? mockRequest(url) : realAPIRequest(url, method = 'GET', data = {});
 };
 
-export default request;
+const questionsApiURL = `${process.env.REACT_APP_POLLS_BASE_URL}questions`;
+const questionsApi = {
+  getAllQuestions() {
+    return request(questionsApiURL, 'GET');
+  }
+};
+
+
+export { request as default, questionsApi };

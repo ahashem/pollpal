@@ -29,9 +29,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": <AppLayout>
-        <div>
-          Hello
-        </div>
+        <Connect(QuestionsList) />
       </AppLayout>,
       "className": "App",
     },
@@ -41,21 +39,17 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": <div>
-          Hello
-        </div>,
+        "children": <Connect(QuestionsList) />,
       },
       "ref": null,
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "Hello",
-        },
+        "nodeType": "class",
+        "props": Object {},
         "ref": null,
-        "rendered": "Hello",
-        "type": "div",
+        "rendered": null,
+        "type": [Function],
       },
       "type": [Function],
     },
@@ -68,9 +62,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": <AppLayout>
-          <div>
-            Hello
-          </div>
+          <Connect(QuestionsList) />
         </AppLayout>,
         "className": "App",
       },
@@ -80,21 +72,17 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": <div>
-            Hello
-          </div>,
+          "children": <Connect(QuestionsList) />,
         },
         "ref": null,
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "Hello",
-          },
+          "nodeType": "class",
+          "props": Object {},
           "ref": null,
-          "rendered": "Hello",
-          "type": "div",
+          "rendered": null,
+          "type": [Function],
         },
         "type": [Function],
       },

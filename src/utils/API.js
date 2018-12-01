@@ -69,14 +69,18 @@ const request = (url, method = 'GET', data = {}) => {
   return (process.env.REACT_APP_MOCK_API) ? mockRequest(url) : realAPIRequest(url, method = 'GET', data = {});
 };
 
-const questionsApiURL = `${process.env.REACT_APP_POLLS_BASE_URL}questions`;
+const basePollApiURL = `${process.env.REACT_APP_POLLS_BASE_URL}`;
+const questionsApiURL = `${basePollApiURL}/questions`;
 const questionsApi = {
   getAllQuestions() {
     return request(questionsApiURL, 'GET');
   },
   getQuestionById(id) {
     return request(`${questionsApiURL}/${id}`, 'GET');
-  }
+  },
+  voteOnChoice(voteUrl){
+    return request(`${basePollApiURL}${voteUrl}`, "POST");
+  },
 };
 
 

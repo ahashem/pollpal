@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'speedux';
-import { Alert, Button, List, Skeleton } from 'antd';
+import { Alert, Button, List, Radio, Skeleton } from 'antd';
 
 import module from './QuestionDetails.module';
 import { withRouter } from 'react-router-dom';
 import Helpers from '../../utils/helpers';
+import { pathRoot } from '../../AppRouter';
 
 const { Item } = List;
+const RadioButton = Radio.Button;
+const RadioGroup = Radio.Group;
 
 class QuestionDetails extends Component {
   static propTypes = {
@@ -29,6 +32,8 @@ class QuestionDetails extends Component {
           votes: PropTypes.number,
         }))
       }),
+      voting: PropTypes.bool,
+      voted: PropTypes.bool,
     }).isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({
@@ -42,9 +47,18 @@ class QuestionDetails extends Component {
     actions.getQuestionDetails(match.params.id);
   }
 
-  vote = (choice) => {
-    const { actions, match } = this.props;
-    actions.vote(match.params.id, choice);
+  vote = () => {
+    const { actions, history } = this.props;
+    const { selectedChoiceUrl } = this.state;
+
+    actions.vote(selectedChoiceUrl);
+    history.push(pathRoot);
+  };
+
+  selectChoice = (e) => {
+    this.setState({
+      selectedChoiceUrl: e.target.value
+    });
   };
 
   /**
@@ -56,29 +70,36 @@ class QuestionDetails extends Component {
   renderQuestionsChoices = (choices = [], loading = false) => {
     const choicesCount = choices.reduce((acc, curr) => acc + curr.votes, 0);
     return (
-      <List
+      <RadioGroup onChange={this.selectChoice}>
+        <List
         itemLayout="horizontal"
         loading={loading}
         dataSource={choices}
         renderItem={choice => (
-          <Item key={choice.url}>
-            <Skeleton avatar title={false} loading={loading} active>
-              <Item.Meta
-                title={choice.choice}
-                description={`${choice.votes} votes`}
-              />
-              <div>{`${Helpers.calculatePercentage(choice.votes, choicesCount)} %`}</div>
-            </Skeleton>
-          </Item>
+          <RadioButton
+            value={choice.url}
+            buttonStyle="solid"
+          >
+            <Item key={choice.url}>
+              <Skeleton avatar title={false} loading={loading} active>
+                <Item.Meta
+                  title={choice.choice}
+                  description={`${choice.votes} votes`}
+                />
+                <div>{`${Helpers.calculatePercentage(choice.votes, choicesCount)} %`}</div>
+              </Skeleton>
+            </Item>
+          </RadioButton>
         )}
       />
+      </RadioGroup>
     );
   };
 
   render() {
 
     const { state } = this.props;
-    const { loading, question: questionDetails, error, errorMsg } = state;
+    const { loading, voting, question: questionDetails, error, errorMsg } = state;
     const { question, choices } = questionDetails;
 
     return (
@@ -100,6 +121,8 @@ class QuestionDetails extends Component {
           <Button
             htmlType="submit"
             type="primary"
+            loading={voting}
+            onClick={this.vote}
           >
             Save
           </Button>

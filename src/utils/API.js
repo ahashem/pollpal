@@ -73,6 +73,9 @@ const questionsApiURL = `${process.env.REACT_APP_POLLS_BASE_URL}questions`;
 const questionsApi = {
   getAllQuestions() {
     return request(questionsApiURL, 'GET');
+  },
+  getQuestionById(id) {
+    return request(`${questionsApiURL}/${id}`, 'GET');
   }
 };
 

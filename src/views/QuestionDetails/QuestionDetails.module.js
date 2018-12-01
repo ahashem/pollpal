@@ -8,6 +8,8 @@ export default createModule('questionDetails', {
     error: false,
     errorMsg: '',
     question: {},
+    voting: false,
+    voted: false
   },
 
   actions: {
@@ -38,14 +40,29 @@ export default createModule('questionDetails', {
     },
 
     /**
-     * this action Performs Vote on a certain Question
-     * @param {string} questionId
-     * @param {string} choiceId
+     * this action Performs Vote on a certain Question's choice
+     * @param {string} voteUrl
      */
-    * vote(questionId, choiceId) {
+    * vote(voteUrl) {
       yield {
-        loading: true,
+        voting: true,
       };
+
+      const voted = yield questionsApi.voteOnChoice(voteUrl).catch(e => e);
+
+      if (voted instanceof Error) {
+        const { errorMsg } = JSON.parse(voted.message);
+        yield {
+          voting: false,
+          error: true,
+          errorMsg,
+        };
+      } else {
+        yield {
+          voting: false,
+          voted,
+        };
+      }
     },
   },
 

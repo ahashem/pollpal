@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'speedux';
-import { Alert, Button, List, Radio, Skeleton } from 'antd';
-
-import module from './QuestionDetails.module';
 import { withRouter } from 'react-router-dom';
-import Helpers from '../../utils/helpers';
+import { connect } from 'speedux';
+import { Alert, Button } from 'antd';
+
+import Choices from '../../components/Choices/Choices';
+import module from './QuestionDetails.module';
 import { pathRoot } from '../../AppRouter';
 
 import './QuestionDetails.scss';
-
-const { Item } = List;
-const RadioButton = Radio.Button;
-const RadioGroup = Radio.Group;
 
 class QuestionDetails extends Component {
   static propTypes = {
@@ -35,7 +31,7 @@ class QuestionDetails extends Component {
         }))
       }),
       voting: PropTypes.bool,
-      voted: PropTypes.bool,
+      voted: PropTypes.shape({}),
     }).isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({
@@ -44,11 +40,18 @@ class QuestionDetails extends Component {
     }).isRequired,
   };
 
+  state = {
+    selectedChoiceUrl: null,
+  };
+
   componentDidMount() {
     const { actions, match } = this.props;
     actions.getQuestionDetails(match.params.id);
   }
 
+  /**
+   * Handle choice Voting action
+   */
   vote = () => {
     const { actions, history } = this.props;
     const { selectedChoiceUrl } = this.state;
@@ -57,6 +60,10 @@ class QuestionDetails extends Component {
     history.push(pathRoot);
   };
 
+  /**
+   * Preserve selected choice URL
+   * @param e
+   */
   selectChoice = (e) => {
     this.setState({
       selectedChoiceUrl: e.target.value
@@ -70,38 +77,19 @@ class QuestionDetails extends Component {
    * @return {*}
    */
   renderQuestionsChoices = (choices = [], loading = false) => {
-    const choicesCount = choices.reduce((acc, curr) => acc + curr.votes, 0);
     return (
       <div style={{ marginBottom: 16 }}>
-        <RadioGroup onChange={this.selectChoice}>
-          <List
-            itemLayout="horizontal"
-            loading={loading}
-            dataSource={choices}
-            renderItem={choice => (
-              <RadioButton
-                value={choice.url}
-                buttonStyle="solid"
-              >
-                <Item key={choice.url}>
-                  <Skeleton avatar title={false} loading={loading} active>
-                    <Item.Meta
-                      title={choice.choice}
-                      description={`${choice.votes} votes`}
-                    />
-                    <div>{`${Helpers.calculatePercentage(choice.votes, choicesCount)} %`}</div>
-                  </Skeleton>
-                </Item>
-              </RadioButton>
-            )}
-          />
-        </RadioGroup>
+        <Choices
+          onChange={this.selectChoice}
+          loading={loading}
+          choices={choices}
+        />
       </div>
     );
   };
 
   render() {
-
+    const { selectedChoiceUrl } = this.state;
     const { state } = this.props;
     const { loading, voting, question: questionDetails, error, errorMsg } = state;
     const { question, choices } = questionDetails;
@@ -127,6 +115,7 @@ class QuestionDetails extends Component {
             type="primary"
             loading={voting}
             onClick={this.vote}
+            disabled={!selectedChoiceUrl}
           >
             Save
           </Button>

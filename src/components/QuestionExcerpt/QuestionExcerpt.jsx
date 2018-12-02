@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { Card } from 'antd';
+
+import Helpers from '../../utils/helpers';
 
 /**
  * Display Question summary
@@ -13,9 +14,10 @@ const QuestionExcerpt = ({ excerpt: { url, question, published_at: published, ch
   return (
     <Card
       title={question}
+      hoverable
     >
-      <p>{published}</p>
-      <p>{choices ? choices.length : 0}</p>
+      <p>{Helpers.formatDate(published)}</p>
+      <p>{choices ? choices.length : 0} choice(s)</p>
     </Card>
   );
 };

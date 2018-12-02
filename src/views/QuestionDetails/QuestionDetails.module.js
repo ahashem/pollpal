@@ -9,7 +9,7 @@ export default createModule('questionDetails', {
     errorMsg: '',
     question: {},
     voting: false,
-    voted: false
+    voted: {}
   },
 
   actions: {

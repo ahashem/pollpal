@@ -4,3 +4,4 @@ parsers:
 
 ignore:
   - "src/utils"
+  - "src/*.js"
